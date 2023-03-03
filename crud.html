@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Posts</title>
+    <script src="blog.js"></script>
+  </head>
+
+  <body>
+    <h1>Create New Blog Post</h1>
+
+    <form>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title"><br>
+      <label for="date">Date:</label>
+      <input type="text" id="date" name="date"><br>
+      <label for="summary">Summary:</label>
+      <input type="text" id="summary" name="summary"><br>
+      <button onclick="createNewPost()">Create</button>
+    </form>
+
+    <h1>Existing Blog Posts: </h1>
+    <ul id="postList"></ul>
+  </body>
+</html>

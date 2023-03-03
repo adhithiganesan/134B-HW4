@@ -1,0 +1,41 @@
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+/* Animation */ 
+div.animation {
+    width: 100px;
+    height: 50px;
+    position: relative;
+    background-color: lightgreen;
+    animation-name: animation;
+    animation-duration: 4s;
+}
+
+@keyframes animation{
+    0%   {background-color:goldenrod; left:0px; top:0px;}
+    50%  {background-color:orange; left:200px; top:200px;}
+    100% {background-color:orangered; left:0px; top:0px;}
+}
+
+/* Transition */
+div.a {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s;
+    
+}
+  
+div.a:hover{
+    width: 300px;
+}
+
+/*Transformation*/
+div.b {
+    width: 150px;
+    height: 80px;
+    background-color: yellow;
+    -ms-transform: rotate(20deg); /* IE 9 */
+    transform: rotate(20deg);
+  }

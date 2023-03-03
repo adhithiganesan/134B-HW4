@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.1/dist/purify.min.js"></script>
+</head>
+
+<body>
+    <title> Native Dialogs </title>
+    <h1>Native Dialogs</h1>
+    <button id="alertButton">Alert</button>
+    <button id="confirmButton">Confirm</button>
+    <button id="promptButton">Prompt</button>
+    <button id="saferPromptButton">Safer Prompt</button>
+    
+    <div id="output"></div>
+    <script> 
+        // need to use arrow function!!!
+        // ALERT BUTTON
+        document.getElementById("alertButton").addEventListener("click", function() {
+            window.alert("This is an alert.");
+        });
+        // CONFIRM BUTTON
+        document.getElementById("confirmButton").addEventListener("click", () => {
+            var result = window.confirm("Are you sure you want to continue?");
+        document.getElementById("output").textContent = `The value returned by the confirm method is: ${result}`;
+         });
+        // PROMPT BUTTON
+        document.getElementById("promptButton").addEventListener("click", function() {
+            var result = window.prompt("What is your favorite animal?:");
+            if (result === null) {
+                document.getElementById("output").textContent = "User declined prompt.";
+            } 
+            else if (result === "") {
+                document.getElementById("output").textContent = "User didn't enter anything.";
+            } 
+            else {
+                document.getElementById("output").textContent = `${result} is an interesting choice, my favorite animal is a cat!`;
+            }
+        });
+        //SAFER PROMPT BUTTON
+        document.getElementById("saferPromptButton").addEventListener("click", function() {
+            var result = window.prompt(`Please enter your favorite animal:\n(This input will be sanitized to guard against XSS attacks)`);
+            if (result === null) {
+                document.getElementById("output").textContent = "User declined prompt.";
+            } 
+            else if (result === "") {
+                document.getElementById("output").textContent = "User didn't enter anything.";
+            } 
+            else {
+                var sanitizedResult = DOMPurify.sanitize(result);
+                document.getElementById("output").innerHTML = `${sanitizedResult}<br>
+                (Sanitized to: ${sanitizedResult}) is awesome!`;
+            }
+        });
+    </script>
+</body>
